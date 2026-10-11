@@ -11,8 +11,21 @@ please help looking look know like also not no yes if it its as into than then s
 GENERIC = set("scheme schemes yojana exam exams scholarship scholarships job jobs apply application government india indian sarkari".split())
 
 
+# Spelling and wording variants that translation tends to produce, mapped to words the records use.
+SYNONYMS = {
+    "engineering": ["technical"], "technical": ["engineering"],
+    "laborer": ["worker", "labour"], "laborers": ["worker", "labour"], "labourer": ["worker", "labour"],
+    "labourers": ["worker", "labour"], "labor": ["worker", "labour"], "unorganized": ["unorganised"],
+    "organized": ["organised"], "organization": ["organisation"], "program": ["programme"], "programs": ["programme"],
+    "aged": ["senior", "old"], "elderly": ["senior", "old"], "disabled": ["disability", "disabilities"],
+    "handicapped": ["disability", "disabilities"], "kisan": ["farmer"], "agriculture": ["farmer"],
+}
+
+
 def query_terms(q):
-    return [t for t in re.findall(r"\w+", q.lower()) if t not in STOPWORDS and len(t) > 1]
+    terms = [t for t in re.findall(r"\w+", q.lower()) if t not in STOPWORDS and len(t) > 1]
+    extra = [s for t in terms for s in SYNONYMS.get(t, []) if s not in terms]
+    return terms + extra
 
 # Ordinal education scale so "needs Class 12" can be compared with "I have a graduate degree".
 EDU_LEVELS = [

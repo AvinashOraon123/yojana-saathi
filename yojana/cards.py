@@ -11,7 +11,7 @@ UI_STRINGS_EN = {
     "hide_english": "Hide English", "verify": "Verify on the official site", "reminder": "Add reminder",
     "scheme": "Scheme", "exam": "Exam", "scholarship": "Scholarship", "job": "Job", "national": "National",
     "state": "State", "search": "Search", "speak": "Speak your question", "placeholder": "Ask about a scheme, exam, scholarship or job",
-    "all": "All", "closing_soon": "Closing soon", "profile": "Find what fits me", "no_results": "No matching entries found.",
+    "all": "All", "writing": "Writing a short summary…", "closing_soon": "Closing soon", "profile": "Find what fits me", "no_results": "No matching entries found.",
 }
 
 

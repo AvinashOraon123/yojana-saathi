@@ -27,7 +27,7 @@ ANSWER_SYSTEM = (
     "invent dates, amounts, or eligibility. For each recommendation give: name, who is eligible, benefit, last "
     "date (or 'not announced'), how to apply, official link. Use simple language suitable for a first-time reader. "
     "Always remind the user to confirm on the official site before applying. Today's date is {today}. "
-    "Keep under 150 words plus cards."
+    "Keep under 150 words plus cards. Write plain text only: no markdown, no bold, no bullet points."
 )
 
 VERIFY_SYSTEM = (
@@ -87,7 +87,7 @@ def heuristic_slots(text):
     for cat in ("SC", "ST", "OBC", "EWS"):
         if re.search(rf"\b{cat.lower()}\b", t):
             slots["category"] = cat
-    if re.search(r"\b(medical advice|diagnos|lawsuit|legal advice|aadhaar number|password)\b", t):
+    if re.search(r"medical advice|diagnos|prescri|dosage|my symptoms|lawsuit|legal advice|sue (?:him|her|them)|aadhaar number|password|otp\b", t):
         slots["out_of_scope"] = True
     return slots
 
@@ -161,14 +161,15 @@ def demo_answer(records):
     return f"Based on the records I have, these may suit you: {names}. {REMINDER}"
 
 
-def answer_from_context(sarvam, question_en, records):
-    """Draft -> LLM verify -> deterministic scrub. Returns (text, removed_claims)."""
+def answer_from_context(sarvam, question_en, records, llm_verify=None):
+    """Draft -> optional LLM verify -> deterministic scrub. Returns (text, removed_claims)."""
+    llm_verify = settings.VERIFY_WITH_LLM if llm_verify is None else llm_verify
     ctx = context_for(records)
     if sarvam is None:
         return demo_answer(records), []
     today = settings.today().isoformat()
     draft = sarvam.chat(ANSWER_SYSTEM.format(today=today), f"CONTEXT:\n{ctx}\n\nQUESTION: {question_en}", temperature=0.2, label="answer")
-    checked = sarvam.chat(VERIFY_SYSTEM, f"CONTEXT:\n{ctx}\n\nDRAFT:\n{draft}", temperature=0.0, label="verify") or draft
+    checked = (sarvam.chat(VERIFY_SYSTEM, f"CONTEXT:\n{ctx}\n\nDRAFT:\n{draft}", temperature=0.0, label="verify") or draft) if llm_verify else draft
     bad = unsupported_claims(checked, ctx)
     final = strip_unsupported(checked, bad)
     if REMINDER.lower()[:25] not in final.lower():
@@ -187,24 +188,85 @@ def prepare(store, sarvam, question, ui_lang, profile=None, include_closed=False
         except Exception:
             lang = ui_lang
         english = sarvam.translate(question, lang, "en-IN") if lang != "en-IN" else question
-    slots = extract_slots(sarvam, english)
+    # Fast path: rule-based slots + deterministic search show cards at once. The slot-extraction model call
+    # (~8 s on a reasoning model) only runs as a fallback when the rules find nothing.
+    slots = heuristic_slots(english)
     base = {"lang": lang, "english": english, "slots": slots}
     if slots.get("out_of_scope"):
         return {**base, "records": [], "answer": DECLINE, "kind": "declined"}
-    f = build_filters(slots, profile, include_closed, closing_soon, overrides)
-    records = [] if unknown_named_terms(store, english) else search(store, f, today)
-    if not records:  # no LLM call at all: this is what stops invented answers about unknown schemes
+    if unknown_named_terms(store, english):
+        return {**base, "records": [], "answer": NOT_FOUND, "kind": "not_found"}
+    records = search(store, build_filters(slots, profile, include_closed, closing_soon, overrides), today)
+    if not records and sarvam is not None:
+        slots = extract_slots(sarvam, english)
+        base["slots"] = slots
+        if slots.get("out_of_scope"):
+            return {**base, "records": [], "answer": DECLINE, "kind": "declined"}
+        records = search(store, build_filters(slots, profile, include_closed, closing_soon, overrides), today)
+    if not records:  # no answer model call at all: this is what stops invented answers about unknown schemes
         return {**base, "records": [], "answer": NOT_FOUND, "kind": "not_found"}
     return {**base, "records": records, "answer": None, "kind": "answer"}
 
 
-def finish(sarvam, prepared):
-    """Write the grounded answer for a prepared result (no-op for declined / not-found)."""
+def finish(sarvam, prepared, llm_verify=None):
+    """Write the grounded answer for a prepared result in one piece (no-op for declined / not-found)."""
     if prepared["kind"] != "answer":
         return prepared
-    answer, removed = answer_from_context(sarvam, prepared["english"], prepared["records"])
+    answer, removed = answer_from_context(sarvam, prepared["english"], prepared["records"], llm_verify)
     return {**prepared, "answer": answer, "removed_claims": removed}
 
 
-def run_pipeline(store, sarvam, question, ui_lang, **kw):
-    return finish(sarvam, prepare(store, sarvam, question, ui_lang, **kw))
+def plain(text):
+    """Strip markdown the model sometimes adds despite instructions."""
+    text = re.sub(r"[*_`#]+", "", text)
+    return re.sub(r"(?m)^\s*[-•]\s+", "", text)
+
+
+def stream_answer(sarvam, prepared):
+    """Yield (sentence, removed_claims) as the model writes. Each sentence is checked against the retrieved
+    records in code before it is shown, so nothing unsupported ever reaches the screen."""
+    ctx = context_for(prepared["records"])
+    system = ANSWER_SYSTEM.format(today=settings.today().isoformat())
+    user = f"CONTEXT:\n{ctx}\n\nQUESTION: {prepared['english']}"
+    got_any = False
+    try:
+        for sent in sentences(sarvam.chat_stream(system, user)):
+            sent = plain(sent).strip()
+            if not sent:
+                continue
+            got_any = True
+            bad = unsupported_claims(sent, ctx)
+            yield ("", bad) if bad else (sent + " ", [])
+    except Exception:
+        pass  # fall through to the non-streaming call
+    if not got_any:  # the stream occasionally returns no content; retry once without streaming
+        try:
+            draft = plain(sarvam.chat(system, user, temperature=0.2, label="answer"))
+        except Exception:
+            draft = ""
+        if not draft:
+            draft = demo_answer(prepared["records"])
+        for sent in sentences([draft]):
+            sent = sent.strip()
+            bad = unsupported_claims(sent, ctx)
+            if sent and not bad:
+                yield sent + " ", []
+            elif bad:
+                yield "", bad
+    yield REMINDER, []
+
+
+def sentences(pieces):
+    """Group streamed text into complete sentences."""
+    buf = ""
+    for piece in pieces:
+        buf += piece
+        while (m := re.search(r"[.!?]\s", buf)):
+            yield buf[:m.end()]
+            buf = buf[m.end():]
+    if buf.strip():
+        yield buf
+
+
+def run_pipeline(store, sarvam, question, ui_lang, llm_verify=None, **kw):
+    return finish(sarvam, prepare(store, sarvam, question, ui_lang, **kw), llm_verify)

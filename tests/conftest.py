@@ -35,6 +35,16 @@ class FakeSarvam:
             return user.split("DRAFT:\n", 1)[1]
         return "{}"
 
+    def chat_stream(self, system, user, temperature=0.2, label="answer-stream", reasoning_effort=None):
+        self.calls.append(("chat", "answer-stream", system, user))
+        if "answer-stream" in self.chat_replies:
+            text = self.chat_replies["answer-stream"]
+        else:
+            ctx = json.loads(user.split("CONTEXT:\n", 1)[1].split("\n\nQUESTION:")[0])
+            text = "You may look at " + ", ".join(r["title"] for r in ctx[:3]) + ". They are described in the records."
+        for i in range(0, len(text), 5):
+            yield text[i:i + 5]
+
     def detect_language(self, text):
         self.calls.append(("detect", text))
         return "hi-IN" if any("ऀ" <= ch <= "ॿ" for ch in text) else "en-IN"

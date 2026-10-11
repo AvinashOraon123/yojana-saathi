@@ -15,7 +15,9 @@ DEMO_MODE = os.getenv("DEMO_MODE", "0") == "1" or SARVAM_API_KEY in PLACEHOLDER_
 CHAT_MODEL = os.getenv("SARVAM_CHAT_MODEL", "sarvam-105b")
 REASONING_EFFORT = os.getenv("SARVAM_REASONING_EFFORT", "low")
 COST_PER_1K_TOKENS = float(os.getenv("COST_PER_1K_TOKENS", "0") or 0)
-ENABLE_SCHEDULER = os.getenv("ENABLE_SCHEDULER", "0") == "1"
+# Second model call that rewrites the draft answer. Slower (~10 s); the code-level claim check always runs.
+VERIFY_WITH_LLM = os.getenv("VERIFY_WITH_LLM", "0") == "1"
+ENABLE_SCHEDULER =os.getenv("ENABLE_SCHEDULER", "0") == "1"
 RATE_LIMIT_PER_MIN = int(os.getenv("RATE_LIMIT_PER_MIN", "30"))
 
 DB_PATH = Path(os.getenv("YOJANA_DB", ROOT / "data" / "yojana.db"))

@@ -48,7 +48,7 @@ Set `ENABLE_SCHEDULER=1` to run the daily crawl and the 6-hourly deadline re-ver
 **Verified against the live Sarvam API**
 - Text-to-speech then speech-to-text round trip on one English sentence.
 - Language detection, translation (en and hi), transliteration, grounded Q&A and the self-check pass, through the running app, for Hindi.
-- **Golden set, 50 native-language questions** (Hindi, Bengali, Tamil, Telugu, Marathi; 10 each): the expected record was in the top 3 for 50 of 50 and ranked first for 49 of 50. Mean time to retrieve results was about 9 s per question (max 22 s) while other live tests ran at the same time. This measures retrieval over the 25 sample records only, so it says nothing about accuracy on real crawled data.
+- **Golden set, 50 native-language questions** (Hindi, Bengali, Tamil, Telugu, Marathi; 10 each), run live: the expected record ranked first for 50 of 50 and in the top 3 for 50 of 50, with retrieval taking under 1 s per question. Caveat: a first run of the faster rule-based path scored 44/50 first, and I then added a small synonym list (for example engineering/technical, laborer/worker) after seeing which questions failed, so this score is partly tuned to this set. It measures retrieval over the 25 sample records only, not accuracy on real crawled data.
 - Hallucination test: 3 questions about schemes that do not exist all returned "could not find".
 - Translation round trip on 20 scheme names (en to hi to en): mean similarity 0.82, 15 of 20 at 0.7 or higher. Names do get mangled when translated (for example "Combined Graduate" came back as "Joint Post Graduate"), which is why the app transliterates names and never translates them.
 
@@ -67,6 +67,7 @@ Set `ENABLE_SCHEDULER=1` to run the daily crawl and the 6-hourly deadline re-ver
 
 ## Known limits
 
-- Answers take several seconds: the draft and the fact-check are two model calls to a reasoning model. Result cards appear first.
+- Result cards appear in about 3 s. The written summary starts after roughly 12-22 s because `sarvam-105b` reasons for 7-13 s before its first word. Each summary sentence is checked in code against the retrieved records before it is shown. The slower second-model fact-check is off by default; set `VERIFY_WITH_LLM=1` to enable it.
+- Question understanding is rule-based first; the Sarvam model only reads the question when the rules find no match. Out-of-scope requests (medical, legal, personal data) are caught by keyword rules plus the answer prompt, not by a model classifier.
 - Deadline reminders are a downloadable `.ics` file, so no contact details are stored. There is no server-side alerting.
 - Nothing about the user is stored. The profile form lives in the browser tab only.

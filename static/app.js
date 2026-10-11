@@ -94,14 +94,14 @@ async function runSearch() {
   const handle = ev => {
     if (id !== runId) return;
     if (ev.event === "results") {
-      renderCards(ev.cards); $("status").textContent = "";
+      renderCards(ev.cards); $("status").textContent = ev.cards.length ? t("writing", "Writing a short summary…") : "";
       $("answer-box").hidden = false; $("answer").textContent = ""; $("answer").classList.add("cursor");
       $("answer-listen").hidden = true; $("answer-en").hidden = true; $("answer-english").hidden = true;
       if (ev.language && ev.language !== "en-IN") $("answer-en").hidden = false;
     } else if (ev.event === "english") {
       $("answer-english").textContent = ev.text;
     } else if (ev.event === "text") {
-      state.answerText += ev.text; typer.push(ev.text);
+      state.answerText += ev.text; $("status").textContent = ""; typer.push(ev.text);
     } else if (ev.event === "done") {
       typer.finish(() => { $("answer").classList.remove("cursor"); if (cfg.live) $("answer-listen").hidden = false; });
     } else if (ev.event === "error") {

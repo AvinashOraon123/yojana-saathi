@@ -110,6 +110,16 @@ class Sarvam:
         self._log_usage(label, r.usage)
         return strip_reasoning(r.choices[0].message.content)
 
+    def chat_stream(self, system, user, temperature=0.2, label="answer-stream", reasoning_effort=None):
+        """Yield answer text pieces as the model produces them."""
+        stream = self._call(label, lambda: self.client.chat.completions(
+            model=settings.CHAT_MODEL, temperature=temperature, stream=True,
+            reasoning_effort=reasoning_effort or settings.REASONING_EFFORT,
+            messages=[{"role": "system", "content": system}, {"role": "user", "content": user}]))
+        for chunk in stream:
+            if chunk.choices and chunk.choices[0].delta and chunk.choices[0].delta.content:
+                yield chunk.choices[0].delta.content
+
     # ---- language -------------------------------------------------------
     def detect_language(self, text):
         r = self._call("identify_language", lambda: self.client.text.identify_language(input=text))

@@ -162,17 +162,29 @@ def create_app(store_factory=None, sarvam=None, demo=None):
                 lang = prep["lang"]
                 cards = cardlib.build_cards(sarvam, prep["records"], lang, today)
                 yield emit(event="results", cards=cards, language=lang, query_english=prep["english"])
-                done = qa.finish(sarvam, prep)
-                english = done["answer"]
-                yield emit(event="english", text=english)
-                if sarvam is not None and lang != "en-IN":
-                    from .sarvam_client import chunk_text
-                    for piece in chunk_text(english, 300):
-                        yield emit(event="text", text=sarvam.translate(piece, "en-IN", lang) + " ")
+                if prep["kind"] == "answer" and sarvam is not None and not settings.VERIFY_WITH_LLM:
+                    # Live path: sentences are shown as the model writes them, each checked in code first.
+                    parts, removed = [], []
+                    for sent, bad in qa.stream_answer(sarvam, prep):
+                        removed += bad
+                        if not sent:
+                            continue
+                        parts.append(sent)
+                        yield emit(event="text", text=sent if lang == "en-IN" else sarvam.translate(sent, "en-IN", lang) + " ")
+                    yield emit(event="english", text="".join(parts))
+                    yield emit(event="done", kind="answer", removed_claims=removed)
                 else:
-                    for piece in re.findall(r"\S+\s*", english):
-                        yield emit(event="text", text=piece)
-                yield emit(event="done", kind=done["kind"], removed_claims=done.get("removed_claims", []))
+                    done = qa.finish(sarvam, prep)
+                    english = done["answer"]
+                    yield emit(event="english", text=english)
+                    if sarvam is not None and lang != "en-IN":
+                        from .sarvam_client import chunk_text
+                        for piece in chunk_text(english, 300):
+                            yield emit(event="text", text=sarvam.translate(piece, "en-IN", lang) + " ")
+                    else:
+                        for piece in re.findall(r"\S+\s*", english):
+                            yield emit(event="text", text=piece)
+                    yield emit(event="done", kind=done["kind"], removed_claims=done.get("removed_claims", []))
             except Exception as e:
                 log.exception("ask failed")
                 yield emit(event="error", error=f"Something went wrong: {str(e)[:200]}")
