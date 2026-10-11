@@ -14,7 +14,7 @@ cp .env.example .env        # then put your key in .env
 python -m uvicorn yojana.api:get_app --factory --port 5001
 ```
 
-Open http://localhost:5001. With no key the app runs in **demo mode**: bundled sample records, English only, no voice.
+Open http://localhost:5001. A Railway deployment uses the `Procfile`; set `SARVAM_API_KEY` as a service variable. With no key the app runs in **demo mode**: bundled sample records, English only, no voice.
 
 ```bash
 python -m pytest                          # 71 offline tests, no API calls, no credits
@@ -48,6 +48,7 @@ Set `ENABLE_SCHEDULER=1` to run the daily crawl and the 6-hourly deadline re-ver
 **Verified against the live Sarvam API**
 - Text-to-speech then speech-to-text round trip on one English sentence.
 - Language detection, translation (en and hi), transliteration, grounded Q&A and the self-check pass, through the running app, for Hindi.
+- **Golden set, 50 native-language questions** (Hindi, Bengali, Tamil, Telugu, Marathi; 10 each): the expected record was in the top 3 for 50 of 50 and ranked first for 49 of 50. Mean time to retrieve results was about 9 s per question (max 22 s) while other live tests ran at the same time. This measures retrieval over the 25 sample records only, so it says nothing about accuracy on real crawled data.
 - Hallucination test: 3 questions about schemes that do not exist all returned "could not find".
 - Translation round trip on 20 scheme names (en to hi to en): mean similarity 0.82, 15 of 20 at 0.7 or higher. Names do get mangled when translated (for example "Combined Graduate" came back as "Joint Post Graduate"), which is why the app transliterates names and never translates them.
 
@@ -59,6 +60,7 @@ Set `ENABLE_SCHEDULER=1` to run the daily crawl and the 6-hourly deadline re-ver
 
 **NOT verified**
 - **Extraction precision against 30 hand-checked records.** There is no gold set in this repo: a person has to check 30 records against the official pages. `scripts/eval_extraction.py` computes the number once `eval/gold_30.json` exists. No figure is claimed.
+- **Which official sites a polite crawler can read.** `python -m yojana.ingest --check` on 34 configured source URLs: 12 returned readable text; 8 are disallowed by their robots.txt (for example upsc.gov.in, pib.gov.in, mohfw.gov.in, labour.gov.in), which the crawler respects; 8 failed SSL or timed out from this network; 4 returned little or no text (JavaScript pages); 1 returned 404 (employmentnews.gov.in needs a corrected URL). Real data will need alternative official feeds for the blocked sites.
 - **Real crawling and extraction.** Many portals (myScheme, NSP) are JavaScript apps that a plain HTTP fetch cannot read. Run `python -m yojana.ingest --check` to see which sources return text. The extractor has not been run on live official pages at scale, so the knowledge base currently holds only the bundled sample records.
 - Languages other than Hindi in the live app; the microphone path in a real browser; scheduler behaviour over days.
 - The sample records come from general knowledge and are marked `confidence 0.5` / "verify on the official site". Check each against its official site before showing them to users.
