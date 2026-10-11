@@ -22,6 +22,10 @@ SYNONYMS = {
 }
 
 
+def _stem(t):
+    return t[:-1] if len(t) > 3 and t.endswith("s") else t
+
+
 def query_terms(q):
     terms = [t for t in re.findall(r"\w+", q.lower()) if t not in STOPWORDS and len(t) > 1]
     extra = [s for t in terms for s in SYNONYMS.get(t, []) if s not in terms]
@@ -128,6 +132,15 @@ def check_eligibility(rec, f):
             add("income", "unknown", f"up to {cap:g}")
         else:
             add("income", "ok" if f.income <= cap else "fail", f"up to {cap:g}")
+
+    occ = e.get("occupation")
+    if occ:
+        if not f.occupation:
+            add("occupation", "unknown", ", ".join(occ))
+        else:
+            mine = {_stem(t) for t in query_terms(f.occupation)}
+            theirs = {_stem(t) for o in occ for t in query_terms(o)}
+            add("occupation", "ok" if mine & theirs else "fail", ", ".join(occ))
 
     dom = e.get("domicile")
     if dom and rec.get("level") == "state" and rec.get("state"):

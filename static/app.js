@@ -246,30 +246,80 @@ function listenCard(c, el, btn) {
   toggleAudio(c.id, [show.title, show.summary, show.eligibility, show.benefit].filter(Boolean).join(". "), btn);
 }
 
-/* ---------- microphone (Sarvam STT, code-mixed Hindi-English supported) ---------- */
-let rec, chunks = [];
-$("mic").onclick = async () => {
-  if (rec && rec.state === "recording") { rec.stop(); return; }
+/* ---------- microphone: live speech-to-text (Sarvam streaming STT through our server) ---------- */
+let mic = null;   // {ws, ctx, stream, node, base, heard}
+
+async function startMic() {
+  $("q").value = ""; $("mic").classList.add("rec"); $("mic").setAttribute("aria-label", "Stop recording");
+  $("status").textContent = "Connecting to the microphone…";
+  let stream, ctx;
   try {
-    const stream = await navigator.mediaDevices.getUserMedia({audio: true});
-    rec = new MediaRecorder(stream); chunks = [];
-    rec.ondataavailable = e => chunks.push(e.data);
-    rec.onstop = async () => {
-      stream.getTracks().forEach(tr => tr.stop());
-      $("mic").classList.remove("rec"); $("mic").setAttribute("aria-label", "Speak your question");
-      const fd = new FormData(); fd.append("audio", new Blob(chunks, {type: "audio/webm"}), "q.webm");
-      $("status").textContent = "Listening…";
-      const r = await fetch("/api/stt", {method: "POST", body: fd});
-      const d = await r.json();
-      if (!r.ok) { $("status").textContent = d.detail || "Speech service error."; return; }
-      $("q").value = d.transcript;
-      const name = Object.keys(cfg.languages).find(k => cfg.languages[k] === d.language_code);
-      if (name && name !== $("lang").value) { $("lang").value = name; store.set("lang", name); await loadStrings(); }
-      runSearch();
-    };
-    rec.start(); $("mic").classList.add("rec"); $("mic").setAttribute("aria-label", "Stop recording");
-    $("status").textContent = "Recording… tap again to stop.";
-  } catch { $("status").textContent = "Microphone is not available."; }
-};
+    stream = await navigator.mediaDevices.getUserMedia({audio: {channelCount: 1, echoCancellation: true, noiseSuppression: true}});
+    ctx = new AudioContext({sampleRate: 16000});
+    await ctx.audioWorklet.addModule("/static/pcm-worklet.js");
+  } catch (e) {
+    stream?.getTracks().forEach(t => t.stop());
+    micReset(e && e.name === "NotAllowedError" ? "Microphone permission was denied. Allow it in the browser and try again." : "Microphone is not available.");
+    return;
+  }
+  const proto = location.protocol === "https:" ? "wss" : "ws";
+  const ws = new WebSocket(`${proto}://${location.host}/ws/stt?language=${encodeURIComponent($("lang").value)}`);
+  ws.binaryType = "arraybuffer";
+  mic = {ws, ctx, stream, heard: false, lang: null, finished: false};
+
+  ws.onopen = () => {
+    const src = ctx.createMediaStreamSource(stream);
+    const node = new AudioWorkletNode(ctx, "pcm-chunker");
+    node.port.onmessage = e => { if (ws.readyState === WebSocket.OPEN) ws.send(e.data); };
+    src.connect(node);   // the node is not connected to the speakers, so there is no echo
+    mic.node = node;
+    $("status").textContent = "Listening… speak now. Tap the microphone again when you are done.";
+  };
+  ws.onmessage = ev => {
+    const m = JSON.parse(ev.data);
+    if (m.type === "speech") { $("status").textContent = "Listening…"; }
+    else if (m.type === "text") {
+      mic.heard = true; mic.lang = m.language_code || mic.lang;
+      $("q").value = m.full; $("q").scrollLeft = $("q").scrollWidth;   // text appears as it is spoken
+    } else if (m.type === "error") { micReset(m.error); }
+    else if (m.type === "done") { finishMic(m.full); }
+  };
+  ws.onerror = () => micReset("Could not reach the speech service. Please try again.");
+  ws.onclose = () => { if (mic && !mic.finished) finishMic($("q").value); };
+}
+
+function stopMic() {
+  if (!mic) return;
+  $("status").textContent = "Finishing…";
+  mic.node?.disconnect();
+  mic.stream.getTracks().forEach(t => t.stop());
+  if (mic.ws.readyState === WebSocket.OPEN) mic.ws.send(JSON.stringify({type: "stop"}));  // the server replies with "done"
+}
+
+async function finishMic(full) {
+  if (!mic || mic.finished) return;
+  mic.finished = true;
+  const lang = mic.lang;
+  micReset("");
+  if (full) $("q").value = full;
+  const name = Object.keys(cfg.languages).find(k => cfg.languages[k] === lang);
+  if (name && name !== $("lang").value) { $("lang").value = name; store.set("lang", name); await loadStrings(); }
+  if ($("q").value.trim()) runSearch(); else $("status").textContent = "I did not hear anything. Please try again.";
+}
+
+function micReset(message) {
+  if (mic) {
+    mic.node?.disconnect();
+    mic.stream?.getTracks().forEach(t => t.stop());
+    try { mic.ctx?.close(); } catch { /* already closed */ }
+    try { mic.ws?.close(); } catch { /* already closed */ }
+    mic.finished = true;
+    mic = null;
+  }
+  $("mic").classList.remove("rec"); $("mic").setAttribute("aria-label", "Speak your question");
+  if (message !== undefined) $("status").textContent = message;
+}
+
+$("mic").onclick = () => { if (mic && !mic.finished) stopMic(); else startMic(); };
 
 init();

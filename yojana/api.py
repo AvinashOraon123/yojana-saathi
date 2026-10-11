@@ -6,13 +6,13 @@ import threading
 import time
 from collections import defaultdict, deque
 
-from fastapi import FastAPI, File, HTTPException, Request, UploadFile
+from fastapi import FastAPI, File, HTTPException, Request, UploadFile, WebSocket
 from fastapi.responses import FileResponse, JSONResponse, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 from . import cards as cardlib
-from . import qa, settings
+from . import qa, settings, stt_stream
 from .search import Filters, search
 from .store import Store, load_demo_data
 
@@ -86,7 +86,7 @@ def lang_code(name):
     return settings.LANGUAGES.get(name, "en-IN")
 
 
-def create_app(store_factory=None, sarvam=None, demo=None):
+def create_app(store_factory=None, sarvam=None, demo=None, stt_connect=None):
     """`sarvam` / `store_factory` can be injected (tests use fakes so no credits are spent)."""
     app = FastAPI(title="Yojana Saathi")
     demo_mode = settings.DEMO_MODE if demo is None else demo
@@ -95,6 +95,7 @@ def create_app(store_factory=None, sarvam=None, demo=None):
         sarvam = Sarvam()
     app.state.sarvam = None if demo_mode else sarvam
     app.state.store_factory = store_factory or Store
+    app.state.stt_connect = stt_connect or stt_stream.sarvam_connect
     limiter = RateLimiter(settings.RATE_LIMIT_PER_MIN)
 
     boot = app.state.store_factory()
@@ -192,6 +193,35 @@ def create_app(store_factory=None, sarvam=None, demo=None):
         return StreamingResponse(events(), media_type="application/x-ndjson")
 
     # ---- speech ---------------------------------------------------------
+    @app.websocket("/ws/stt")
+    async def ws_stt(ws: WebSocket, language: str = "auto"):
+        """Live transcription: the browser streams 16 kHz PCM16 audio and gets text back as it is spoken."""
+        await ws.accept()
+        ip = ws.client.host if ws.client else "?"
+        if app.state.sarvam is None:
+            await ws.send_json({"type": "error", "error": "Voice needs a Sarvam API key (demo mode is text only)."})
+            await ws.close()
+            return
+        if not limiter.allow(ip):
+            await ws.send_json({"type": "error", "error": "Too many requests. Please wait a minute."})
+            await ws.close()
+            return
+        code = settings.LANGUAGES.get(language, "unknown")  # unknown -> Sarvam auto-detects the language
+        try:
+            full = await stt_stream.relay(ws, app.state.stt_connect, code)
+            await ws.send_json({"type": "done", "full": full})
+        except Exception as e:
+            log.exception("live stt failed")
+            try:
+                await ws.send_json({"type": "error", "error": f"Speech service error: {str(e)[:150]}"})
+            except Exception:
+                pass
+        finally:
+            try:
+                await ws.close()
+            except Exception:
+                pass
+
     @app.post("/api/stt")
     async def api_stt(audio: UploadFile = File(...)):
         if app.state.sarvam is None:
