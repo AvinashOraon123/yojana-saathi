@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "YojanaRecord",
+  "type": "object",
+  "required": ["title", "type", "level", "authority", "summary_en", "official_url"],
+  "additionalProperties": true,
+  "properties": {
+    "id": {"type": ["string", "null"]},
+    "type": {"enum": ["scheme", "exam", "scholarship", "job"]},
+    "title": {"type": "string", "minLength": 3},
+    "level": {"enum": ["national", "state"]},
+    "state": {"type": ["string", "null"]},
+    "authority": {"type": "string", "minLength": 2},
+    "summary_en": {"type": "string", "maxLength": 600},
+    "eligibility": {
+      "type": ["object", "null"],
+      "properties": {
+        "min_age": {"type": ["integer", "null"], "minimum": 0, "maximum": 120},
+        "max_age": {"type": ["integer", "null"], "minimum": 0, "maximum": 120},
+        "gender": {"enum": ["male", "female", "any", null]},
+        "category": {"type": ["array", "null"], "items": {"enum": ["General", "OBC", "SC", "ST", "EWS", "PwD", "Minority"]}},
+        "education": {"type": ["string", "null"]},
+        "income_limit": {"type": ["number", "null"], "minimum": 0},
+        "occupation": {"type": ["array", "null"], "items": {"type": "string"}},
+        "domicile": {"type": ["string", "null"]},
+        "other": {"type": ["string", "null"]}
+      }
+    },
+    "target_groups": {
+      "type": ["array", "null"],
+      "items": {"enum": ["student", "youth", "job_seeker", "woman", "farmer", "worker", "entrepreneur", "senior", "disabled", "minority", "child"]}
+    },
+    "benefit": {"type": ["string", "null"]},
+    "how_to_apply": {"type": ["string", "null"]},
+    "documents_required": {"type": ["array", "null"], "items": {"type": "string"}},
+    "dates": {
+      "type": ["object", "null"],
+      "properties": {
+        "notification": {"type": ["string", "null"], "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
+        "application_start": {"type": ["string", "null"], "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
+        "application_end": {"type": ["string", "null"], "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
+        "exam_date": {"type": ["string", "null"], "pattern": "^\\d{4}-\\d{2}-\\d{2}$"},
+        "result_date": {"type": ["string", "null"], "pattern": "^\\d{4}-\\d{2}-\\d{2}$"}
+      }
+    },
+    "fee": {"type": ["string", "null"]},
+    "official_url": {"type": "string", "pattern": "^https?://"},
+    "source_url": {"type": ["string", "null"]},
+    "fetched_at": {"type": ["string", "null"]},
+    "last_verified_at": {"type": ["string", "null"]},
+    "confidence": {"type": ["number", "null"], "minimum": 0, "maximum": 1}
+  }
+}

@@ -1,0 +1,56 @@
+# Official sources the crawler may fetch. Adding a state or a site is a config-only change.
+# kind: official  -> pages are extracted into records
+# kind: discovery -> pages are only mined for outbound links to official domains; never extracted
+# Unverified: root URLs below are best-known official domains. Run `python -m yojana.ingest --check`
+# to see which respond; many portals are JavaScript apps that a plain HTTP fetch cannot read.
+
+official_domain_suffixes: [".gov.in", ".nic.in", ".ac.in", ".edu.in", ".gov"]
+official_hosts: [ibps.in, www.ibps.in, upsc.gov.in, nta.ac.in]
+
+national:
+  - {id: myscheme,      name: myScheme,                     type_hint: scheme,      kind: official, urls: ["https://www.myscheme.gov.in/"]}
+  - {id: nsp,           name: National Scholarship Portal,  type_hint: scholarship, kind: official, urls: ["https://scholarships.gov.in/"]}
+  - {id: indiagov,      name: National Portal of India,     type_hint: scheme,      kind: official, urls: ["https://www.india.gov.in/"]}
+  - {id: upsc,          name: UPSC,                         type_hint: exam,        kind: official, urls: ["https://upsc.gov.in/"]}
+  - {id: ssc,           name: Staff Selection Commission,   type_hint: exam,        kind: official, urls: ["https://ssc.gov.in/"]}
+  - {id: nta,           name: National Testing Agency,      type_hint: exam,        kind: official, urls: ["https://nta.ac.in/"]}
+  - {id: ibps,          name: IBPS,                         type_hint: exam,        kind: official, urls: ["https://www.ibps.in/"]}
+  - {id: rrb,           name: Railway Recruitment Boards,   type_hint: job,         kind: official, urls: ["https://www.rrbcdg.gov.in/"]}
+  - {id: employmentnews, name: Employment News,             type_hint: job,         kind: official, urls: ["https://www.employmentnews.gov.in/"]}
+  - {id: pib,           name: PIB press releases,           type_hint: scheme,      kind: official, urls: ["https://pib.gov.in/"]}
+  - {id: agri,          name: Ministry of Agriculture,      type_hint: scheme,      kind: official, urls: ["https://agriwelfare.gov.in/"]}
+  - {id: msde,          name: Ministry of Skill Development, type_hint: scheme,     kind: official, urls: ["https://msde.gov.in/"]}
+  - {id: education,     name: Ministry of Education,        type_hint: scholarship, kind: official, urls: ["https://www.education.gov.in/"]}
+  - {id: minority,      name: Ministry of Minority Affairs, type_hint: scholarship, kind: official, urls: ["https://minorityaffairs.gov.in/"]}
+  - {id: socialjustice, name: Ministry of Social Justice,   type_hint: scholarship, kind: official, urls: ["https://socialjustice.gov.in/"]}
+  - {id: wcd,           name: Ministry of Women & Child Development, type_hint: scheme, kind: official, urls: ["https://wcd.gov.in/"]}
+  - {id: health,        name: Ministry of Health,           type_hint: scheme,      kind: official, urls: ["https://mohfw.gov.in/"]}
+  - {id: labour,        name: Ministry of Labour,           type_hint: scheme,      kind: official, urls: ["https://labour.gov.in/"]}
+  # Discovery only: never extracted from, never cited as the official URL.
+  - {id: discovery_sarkariresult, name: Aggregator (discovery only), type_hint: job, kind: discovery, urls: ["https://www.sarkariresult.com/"]}
+
+states:
+  west_bengal:
+    name: West Bengal
+    sites: [{url: "https://wb.gov.in/", type_hint: scheme}, {url: "https://wbpsc.gov.in/", type_hint: job}]
+  bihar:
+    name: Bihar
+    sites: [{url: "https://state.bihar.gov.in/", type_hint: scheme}, {url: "https://bpsc.bihar.gov.in/", type_hint: job}]
+  uttar_pradesh:
+    name: Uttar Pradesh
+    sites: [{url: "https://up.gov.in/", type_hint: scheme}, {url: "https://uppsc.up.nic.in/", type_hint: job}]
+  maharashtra:
+    name: Maharashtra
+    sites: [{url: "https://www.maharashtra.gov.in/", type_hint: scheme}, {url: "https://mpsc.gov.in/", type_hint: job}]
+  tamil_nadu:
+    name: Tamil Nadu
+    sites: [{url: "https://www.tn.gov.in/", type_hint: scheme}, {url: "https://www.tnpsc.gov.in/", type_hint: job}]
+  karnataka:
+    name: Karnataka
+    sites: [{url: "https://www.karnataka.gov.in/", type_hint: scheme}, {url: "https://kpsc.kar.nic.in/", type_hint: job}]
+  odisha:
+    name: Odisha
+    sites: [{url: "https://odisha.gov.in/", type_hint: scheme}, {url: "https://opsc.gov.in/", type_hint: job}]
+  rajasthan:
+    name: Rajasthan
+    sites: [{url: "https://rajasthan.gov.in/", type_hint: scheme}, {url: "https://rpsc.rajasthan.gov.in/", type_hint: job}]

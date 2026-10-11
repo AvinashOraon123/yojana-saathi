@@ -1,0 +1,1044 @@
+[
+ {
+  "type": "scheme",
+  "title": "PM-KISAN",
+  "level": "national",
+  "state": null,
+  "authority": "Ministry of Agriculture & Farmers Welfare",
+  "summary_en": "Income support paid directly to the bank accounts of eligible landholding farmer families.",
+  "eligibility": {
+   "min_age": null,
+   "max_age": null,
+   "gender": null,
+   "category": null,
+   "education": null,
+   "income_limit": null,
+   "occupation": [
+    "farmer"
+   ],
+   "domicile": null,
+   "other": "Landholding farmer families, subject to the exclusions in the scheme guidelines."
+  },
+  "target_groups": [
+   "farmer"
+  ],
+  "benefit": "Direct income support paid in instalments to bank accounts.",
+  "how_to_apply": "Register on the PM-KISAN portal or at a Common Service Centre with Aadhaar, land records and bank details.",
+  "documents_required": null,
+  "dates": {
+   "notification": null,
+   "application_start": null,
+   "application_end": null,
+   "exam_date": null,
+   "result_date": null
+  },
+  "fee": null,
+  "official_url": "https://pmkisan.gov.in",
+  "source_url": "https://pmkisan.gov.in",
+  "fetched_at": null,
+  "last_verified_at": null,
+  "confidence": 0.5,
+  "needs_verification": true,
+  "demo_sample": true
+ },
+ {
+  "type": "scheme",
+  "title": "Ayushman Bharat PM-JAY",
+  "level": "national",
+  "state": null,
+  "authority": "National Health Authority",
+  "summary_en": "Health cover for hospital treatment for eligible poor and vulnerable families.",
+  "eligibility": {
+   "min_age": null,
+   "max_age": null,
+   "gender": null,
+   "category": null,
+   "education": null,
+   "income_limit": null,
+   "occupation": null,
+   "domicile": null,
+   "other": "Families identified through SECC data and other notified categories."
+  },
+  "target_groups": [
+   "child",
+   "woman",
+   "senior",
+   "worker"
+  ],
+  "benefit": "Cashless treatment at empanelled hospitals.",
+  "how_to_apply": "Check eligibility on the official portal or at the Ayushman Mitra desk of an empanelled hospital.",
+  "documents_required": null,
+  "dates": {
+   "notification": null,
+   "application_start": null,
+   "application_end": null,
+   "exam_date": null,
+   "result_date": null
+  },
+  "fee": null,
+  "official_url": "https://pmjay.gov.in",
+  "source_url": "https://pmjay.gov.in",
+  "fetched_at": null,
+  "last_verified_at": null,
+  "confidence": 0.5,
+  "needs_verification": true,
+  "demo_sample": true
+ },
+ {
+  "type": "scheme",
+  "title": "Pradhan Mantri Awas Yojana",
+  "level": "national",
+  "state": null,
+  "authority": "Ministry of Housing and Urban Affairs / Ministry of Rural Development",
+  "summary_en": "Help for eligible households without a pucca house to build or buy one.",
+  "eligibility": {
+   "min_age": null,
+   "max_age": null,
+   "gender": null,
+   "category": null,
+   "education": null,
+   "income_limit": null,
+   "occupation": null,
+   "domicile": null,
+   "other": "Eligible households without a pucca house, per the rural and urban guidelines."
+  },
+  "target_groups": [
+   "worker",
+   "woman"
+  ],
+  "benefit": "Financial assistance for a house.",
+  "how_to_apply": "Apply through the PMAY portal, your urban local body or gram panchayat.",
+  "documents_required": null,
+  "dates": {
+   "notification": null,
+   "application_start": null,
+   "application_end": null,
+   "exam_date": null,
+   "result_date": null
+  },
+  "fee": null,
+  "official_url": "https://pmaymis.gov.in",
+  "source_url": "https://pmaymis.gov.in",
+  "fetched_at": null,
+  "last_verified_at": null,
+  "confidence": 0.5,
+  "needs_verification": true,
+  "demo_sample": true
+ },
+ {
+  "type": "scheme",
+  "title": "PM Ujjwala Yojana",
+  "level": "national",
+  "state": null,
+  "authority": "Ministry of Petroleum and Natural Gas",
+  "summary_en": "LPG connection support for women from eligible poor households.",
+  "eligibility": {
+   "min_age": 18,
+   "max_age": null,
+   "gender": "female",
+   "category": null,
+   "education": null,
+   "income_limit": null,
+   "occupation": null,
+   "domicile": null,
+   "other": "Adult women from eligible households without an LPG connection."
+  },
+  "target_groups": [
+   "woman"
+  ],
+  "benefit": "Support for a new LPG connection.",
+  "how_to_apply": "Apply at an LPG distributor or on the official portal with KYC documents.",
+  "documents_required": null,
+  "dates": {
+   "notification": null,
+   "application_start": null,
+   "application_end": null,
+   "exam_date": null,
+   "result_date": null
+  },
+  "fee": null,
+  "official_url": "https://www.pmuy.gov.in",
+  "source_url": "https://www.pmuy.gov.in",
+  "fetched_at": null,
+  "last_verified_at": null,
+  "confidence": 0.5,
+  "needs_verification": true,
+  "demo_sample": true
+ },
+ {
+  "type": "scheme",
+  "title": "Atal Pension Yojana",
+  "level": "national",
+  "state": null,
+  "authority": "Pension Fund Regulatory and Development Authority",
+  "summary_en": "A voluntary pension scheme for workers, especially in the unorganised sector.",
+  "eligibility": {
+   "min_age": 18,
+   "max_age": 40,
+   "gender": null,
+   "category": null,
+   "education": null,
+   "income_limit": null,
+   "occupation": null,
+   "domicile": null,
+   "other": "Needs a savings bank account."
+  },
+  "target_groups": [
+   "worker",
+   "youth"
+  ],
+  "benefit": "A fixed monthly pension after age 60, depending on the contribution chosen.",
+  "how_to_apply": "Enrol at your bank or through net banking.",
+  "documents_required": null,
+  "dates": {
+   "notification": null,
+   "application_start": null,
+   "application_end": null,
+   "exam_date": null,
+   "result_date": null
+  },
+  "fee": null,
+  "official_url": "https://www.npscra.nsdl.co.in",
+  "source_url": "https://www.npscra.nsdl.co.in",
+  "fetched_at": null,
+  "last_verified_at": null,
+  "confidence": 0.5,
+  "needs_verification": true,
+  "demo_sample": true
+ },
+ {
+  "type": "scheme",
+  "title": "e-Shram registration",
+  "level": "national",
+  "state": null,
+  "authority": "Ministry of Labour and Employment",
+  "summary_en": "National database registration for unorganised workers, giving access to social security benefits.",
+  "eligibility": {
+   "min_age": 16,
+   "max_age": 59,
+   "gender": null,
+   "category": null,
+   "education": null,
+   "income_limit": null,
+   "occupation": [
+    "unorganised worker"
+   ],
+   "domicile": null,
+   "other": "Not a member of EPFO or ESIC and not an income-tax payer."
+  },
+  "target_groups": [
+   "worker"
+  ],
+  "benefit": "A registration card and access to social security schemes.",
+  "how_to_apply": "Register on the e-Shram portal or at a Common Service Centre with Aadhaar and a bank account.",
+  "documents_required": null,
+  "dates": {
+   "notification": null,
+   "application_start": null,
+   "application_end": null,
+   "exam_date": null,
+   "result_date": null
+  },
+  "fee": null,
+  "official_url": "https://eshram.gov.in",
+  "source_url": "https://eshram.gov.in",
+  "fetched_at": null,
+  "last_verified_at": null,
+  "confidence": 0.5,
+  "needs_verification": true,
+  "demo_sample": true
+ },
+ {
+  "type": "scheme",
+  "title": "Indira Gandhi National Old Age Pension Scheme",
+  "level": "national",
+  "state": null,
+  "authority": "Ministry of Rural Development (NSAP)",
+  "summary_en": "Monthly pension support for older people from poor households.",
+  "eligibility": {
+   "min_age": 60,
+   "max_age": null,
+   "gender": null,
+   "category": null,
+   "education": null,
+   "income_limit": null,
+   "occupation": null,
+   "domicile": null,
+   "other": "Below-poverty-line households, as per NSAP guidelines."
+  },
+  "target_groups": [
+   "senior"
+  ],
+  "benefit": "A monthly pension from central and state governments.",
+  "how_to_apply": "Apply through your gram panchayat, municipality or district social welfare office.",
+  "documents_required": null,
+  "dates": {
+   "notification": null,
+   "application_start": null,
+   "application_end": null,
+   "exam_date": null,
+   "result_date": null
+  },
+  "fee": null,
+  "official_url": "https://nsap.nic.in",
+  "source_url": "https://nsap.nic.in",
+  "fetched_at": null,
+  "last_verified_at": null,
+  "confidence": 0.5,
+  "needs_verification": true,
+  "demo_sample": true
+ },
+ {
+  "type": "scheme",
+  "title": "Pradhan Mantri Mudra Yojana",
+  "level": "national",
+  "state": null,
+  "authority": "Ministry of Finance",
+  "summary_en": "Collateral-free loans for small and micro businesses.",
+  "eligibility": {
+   "min_age": 18,
+   "max_age": null,
+   "gender": null,
+   "category": null,
+   "education": null,
+   "income_limit": null,
+   "occupation": null,
+   "domicile": null,
+   "other": "Non-farm small business activity."
+  },
+  "target_groups": [
+   "entrepreneur",
+   "youth",
+   "woman"
+  ],
+  "benefit": "Loans in categories for starting and growing small businesses.",
+  "how_to_apply": "Apply at a bank, NBFC or microfinance institution or on the Udyamimitra portal.",
+  "documents_required": null,
+  "dates": {
+   "notification": null,
+   "application_start": null,
+   "application_end": null,
+   "exam_date": null,
+   "result_date": null
+  },
+  "fee": null,
+  "official_url": "https://www.mudra.org.in",
+  "source_url": "https://www.mudra.org.in",
+  "fetched_at": null,
+  "last_verified_at": null,
+  "confidence": 0.5,
+  "needs_verification": true,
+  "demo_sample": true
+ },
+ {
+  "type": "scheme",
+  "title": "Stand-Up India",
+  "level": "national",
+  "state": null,
+  "authority": "Department of Financial Services",
+  "summary_en": "Bank loans for women and SC/ST entrepreneurs starting a new enterprise.",
+  "eligibility": {
+   "min_age": 18,
+   "max_age": null,
+   "gender": null,
+   "category": [
+    "SC",
+    "ST"
+   ],
+   "education": null,
+   "income_limit": null,
+   "occupation": null,
+   "domicile": null,
+   "other": "SC/ST or women entrepreneurs setting up a first-time enterprise."
+  },
+  "target_groups": [
+   "entrepreneur",
+   "woman"
+  ],
+  "benefit": "Bank loans for a new enterprise.",
+  "how_to_apply": "Apply through the Stand-Up India portal or a bank branch.",
+  "documents_required": null,
+  "dates": {
+   "notification": null,
+   "application_start": null,
+   "application_end": null,
+   "exam_date": null,
+   "result_date": null
+  },
+  "fee": null,
+  "official_url": "https://www.standupmitra.in",
+  "source_url": "https://www.standupmitra.in",
+  "fetched_at": null,
+  "last_verified_at": null,
+  "confidence": 0.5,
+  "needs_verification": true,
+  "demo_sample": true
+ },
+ {
+  "type": "scheme",
+  "title": "Pradhan Mantri Kaushal Vikas Yojana",
+  "level": "national",
+  "state": null,
+  "authority": "Ministry of Skill Development and Entrepreneurship",
+  "summary_en": "Short-term skill training for young people with a certificate at the end.",
+  "eligibility": {
+   "min_age": null,
+   "max_age": null,
+   "gender": null,
+   "category": null,
+   "education": null,
+   "income_limit": null,
+   "occupation": null,
+   "domicile": null,
+   "other": "Indian nationals looking for skill training; course conditions vary."
+  },
+  "target_groups": [
+   "youth",
+   "job_seeker",
+   "student"
+  ],
+  "benefit": "Free skill training and a certificate.",
+  "how_to_apply": "Find a training centre on the Skill India portal.",
+  "documents_required": null,
+  "dates": {
+   "notification": null,
+   "application_start": null,
+   "application_end": null,
+   "exam_date": null,
+   "result_date": null
+  },
+  "fee": null,
+  "official_url": "https://www.skillindiadigital.gov.in",
+  "source_url": "https://www.skillindiadigital.gov.in",
+  "fetched_at": null,
+  "last_verified_at": null,
+  "confidence": 0.5,
+  "needs_verification": true,
+  "demo_sample": true
+ },
+ {
+  "type": "scholarship",
+  "title": "Post Matric Scholarships (National Scholarship Portal)",
+  "level": "national",
+  "state": null,
+  "authority": "Ministry of Social Justice, Tribal Affairs and Minority Affairs",
+  "summary_en": "Financial support for post-matric studies for students from notified categories.",
+  "eligibility": {
+   "min_age": null,
+   "max_age": null,
+   "gender": null,
+   "category": [
+    "SC",
+    "ST",
+    "OBC",
+    "Minority"
+   ],
+   "education": null,
+   "income_limit": null,
+   "occupation": null,
+   "domicile": null,
+   "other": "Family income limits and course conditions are set by each scheme."
+  },
+  "target_groups": [
+   "student",
+   "minority"
+  ],
+  "benefit": "Financial support for post-matric education.",
+  "how_to_apply": "Apply on the National Scholarship Portal with income, caste and marks documents.",
+  "documents_required": null,
+  "dates": {
+   "notification": null,
+   "application_start": null,
+   "application_end": null,
+   "exam_date": null,
+   "result_date": null
+  },
+  "fee": null,
+  "official_url": "https://scholarships.gov.in",
+  "source_url": "https://scholarships.gov.in",
+  "fetched_at": null,
+  "last_verified_at": null,
+  "confidence": 0.5,
+  "needs_verification": true,
+  "demo_sample": true
+ },
+ {
+  "type": "scholarship",
+  "title": "AICTE Pragati Scholarship for Girls",
+  "level": "national",
+  "state": null,
+  "authority": "AICTE",
+  "summary_en": "Support for girl students in AICTE-approved technical programmes.",
+  "eligibility": {
+   "min_age": null,
+   "max_age": null,
+   "gender": "female",
+   "category": null,
+   "education": null,
+   "income_limit": null,
+   "occupation": null,
+   "domicile": null,
+   "other": "Admitted to an AICTE-approved technical programme; family income limit applies."
+  },
+  "target_groups": [
+   "student",
+   "woman"
+  ],
+  "benefit": "Financial assistance for tuition and expenses.",
+  "how_to_apply": "Apply on the National Scholarship Portal.",
+  "documents_required": null,
+  "dates": {
+   "notification": null,
+   "application_start": null,
+   "application_end": null,
+   "exam_date": null,
+   "result_date": null
+  },
+  "fee": null,
+  "official_url": "https://www.aicte-india.org",
+  "source_url": "https://www.aicte-india.org",
+  "fetched_at": null,
+  "last_verified_at": null,
+  "confidence": 0.5,
+  "needs_verification": true,
+  "demo_sample": true
+ },
+ {
+  "type": "scholarship",
+  "title": "Scholarships for Students with Disabilities",
+  "level": "national",
+  "state": null,
+  "authority": "Department of Empowerment of Persons with Disabilities",
+  "summary_en": "Scholarships for students with disabilities at various education levels.",
+  "eligibility": {
+   "min_age": null,
+   "max_age": null,
+   "gender": null,
+   "category": [
+    "PwD"
+   ],
+   "education": null,
+   "income_limit": null,
+   "occupation": null,
+   "domicile": null,
+   "other": "Disability certificate and course conditions apply."
+  },
+  "target_groups": [
+   "student",
+   "disabled"
+  ],
+  "benefit": "Financial support for education.",
+  "how_to_apply": "Apply on the National Scholarship Portal.",
+  "documents_required": null,
+  "dates": {
+   "notification": null,
+   "application_start": null,
+   "application_end": null,
+   "exam_date": null,
+   "result_date": null
+  },
+  "fee": null,
+  "official_url": "https://scholarships.gov.in",
+  "source_url": "https://scholarships.gov.in",
+  "fetched_at": null,
+  "last_verified_at": null,
+  "confidence": 0.5,
+  "needs_verification": true,
+  "demo_sample": true
+ },
+ {
+  "type": "scholarship",
+  "title": "Kanyashree Prakalpa",
+  "level": "state",
+  "state": "West Bengal",
+  "authority": "Government of West Bengal",
+  "summary_en": "A conditional cash transfer scheme to keep girls in school and delay early marriage.",
+  "eligibility": {
+   "min_age": null,
+   "max_age": null,
+   "gender": "female",
+   "category": null,
+   "education": null,
+   "income_limit": null,
+   "occupation": null,
+   "domicile": "West Bengal",
+   "other": "Girl students enrolled in school or college, as per scheme rules."
+  },
+  "target_groups": [
+   "student",
+   "woman",
+   "child"
+  ],
+  "benefit": "Annual and one-time cash benefits.",
+  "how_to_apply": "Apply through your school or college, or the Kanyashree portal.",
+  "documents_required": null,
+  "dates": {
+   "notification": null,
+   "application_start": null,
+   "application_end": null,
+   "exam_date": null,
+   "result_date": null
+  },
+  "fee": null,
+  "official_url": "https://wbkanyashree.gov.in",
+  "source_url": "https://wbkanyashree.gov.in",
+  "fetched_at": null,
+  "last_verified_at": null,
+  "confidence": 0.5,
+  "needs_verification": true,
+  "demo_sample": true
+ },
+ {
+  "type": "scholarship",
+  "title": "Mukhyamantri Kanya Utthan Yojana",
+  "level": "state",
+  "state": "Bihar",
+  "authority": "Government of Bihar",
+  "summary_en": "Financial support for girls at different stages of education.",
+  "eligibility": {
+   "min_age": null,
+   "max_age": null,
+   "gender": "female",
+   "category": null,
+   "education": null,
+   "income_limit": null,
+   "occupation": null,
+   "domicile": "Bihar",
+   "other": "Girls from Bihar, as per scheme rules."
+  },
+  "target_groups": [
+   "student",
+   "woman"
+  ],
+  "benefit": "Financial support linked to education milestones.",
+  "how_to_apply": "Apply through the Bihar education department portal.",
+  "documents_required": null,
+  "dates": {
+   "notification": null,
+   "application_start": null,
+   "application_end": null,
+   "exam_date": null,
+   "result_date": null
+  },
+  "fee": null,
+  "official_url": "https://state.bihar.gov.in",
+  "source_url": "https://state.bihar.gov.in",
+  "fetched_at": null,
+  "last_verified_at": null,
+  "confidence": 0.5,
+  "needs_verification": true,
+  "demo_sample": true
+ },
+ {
+  "type": "scholarship",
+  "title": "Pudhumai Penn",
+  "level": "state",
+  "state": "Tamil Nadu",
+  "authority": "Government of Tamil Nadu",
+  "summary_en": "Monthly support for girl students from government schools who go on to higher education.",
+  "eligibility": {
+   "min_age": null,
+   "max_age": null,
+   "gender": "female",
+   "category": null,
+   "education": null,
+   "income_limit": null,
+   "occupation": null,
+   "domicile": "Tamil Nadu",
+   "other": "Girls who studied in government schools, as per scheme rules."
+  },
+  "target_groups": [
+   "student",
+   "woman"
+  ],
+  "benefit": "Monthly financial support during higher education.",
+  "how_to_apply": "Apply through your college as per the state notification.",
+  "documents_required": null,
+  "dates": {
+   "notification": null,
+   "application_start": null,
+   "application_end": null,
+   "exam_date": null,
+   "result_date": null
+  },
+  "fee": null,
+  "official_url": "https://www.tn.gov.in",
+  "source_url": "https://www.tn.gov.in",
+  "fetched_at": null,
+  "last_verified_at": null,
+  "confidence": 0.5,
+  "needs_verification": true,
+  "demo_sample": true
+ },
+ {
+  "type": "scheme",
+  "title": "KALIA Scheme",
+  "level": "state",
+  "state": "Odisha",
+  "authority": "Government of Odisha",
+  "summary_en": "Support for small and marginal farmers and landless agricultural households in Odisha.",
+  "eligibility": {
+   "min_age": null,
+   "max_age": null,
+   "gender": null,
+   "category": null,
+   "education": null,
+   "income_limit": null,
+   "occupation": [
+    "farmer"
+   ],
+   "domicile": "Odisha",
+   "other": "Small and marginal farmers and landless agricultural households."
+  },
+  "target_groups": [
+   "farmer"
+  ],
+  "benefit": "Financial assistance for cultivation and livelihood.",
+  "how_to_apply": "Check the state agriculture department for the current application process.",
+  "documents_required": null,
+  "dates": {
+   "notification": null,
+   "application_start": null,
+   "application_end": null,
+   "exam_date": null,
+   "result_date": null
+  },
+  "fee": null,
+  "official_url": "https://kalia.odisha.gov.in",
+  "source_url": "https://kalia.odisha.gov.in",
+  "fetched_at": null,
+  "last_verified_at": null,
+  "confidence": 0.5,
+  "needs_verification": true,
+  "demo_sample": true
+ },
+ {
+  "type": "exam",
+  "title": "UPSC Civil Services Examination",
+  "level": "national",
+  "state": null,
+  "authority": "Union Public Service Commission",
+  "summary_en": "The exam for the IAS, IPS, IFS and other central services.",
+  "eligibility": {
+   "min_age": null,
+   "max_age": null,
+   "gender": null,
+   "category": null,
+   "education": "Graduate",
+   "income_limit": null,
+   "occupation": null,
+   "domicile": null,
+   "other": "Age and attempt limits are fixed in each year's notification."
+  },
+  "target_groups": [
+   "youth",
+   "job_seeker"
+  ],
+  "benefit": "Recruitment to the All India and Central Services.",
+  "how_to_apply": "Apply online on the UPSC website when the notification is released.",
+  "documents_required": null,
+  "dates": {
+   "notification": null,
+   "application_start": null,
+   "application_end": null,
+   "exam_date": null,
+   "result_date": null
+  },
+  "fee": null,
+  "official_url": "https://upsc.gov.in",
+  "source_url": "https://upsc.gov.in",
+  "fetched_at": null,
+  "last_verified_at": null,
+  "confidence": 0.5,
+  "needs_verification": true,
+  "demo_sample": true
+ },
+ {
+  "type": "exam",
+  "title": "SSC Combined Graduate Level",
+  "level": "national",
+  "state": null,
+  "authority": "Staff Selection Commission",
+  "summary_en": "A graduate-level exam for Group B and C posts in central government departments.",
+  "eligibility": {
+   "min_age": null,
+   "max_age": null,
+   "gender": null,
+   "category": null,
+   "education": "Graduate",
+   "income_limit": null,
+   "occupation": null,
+   "domicile": null,
+   "other": "Post-wise age and qualification criteria apply."
+  },
+  "target_groups": [
+   "youth",
+   "job_seeker"
+  ],
+  "benefit": "Group B and C posts in central departments.",
+  "how_to_apply": "Register and apply online on the SSC website.",
+  "documents_required": null,
+  "dates": {
+   "notification": null,
+   "application_start": null,
+   "application_end": null,
+   "exam_date": null,
+   "result_date": null
+  },
+  "fee": null,
+  "official_url": "https://ssc.gov.in",
+  "source_url": "https://ssc.gov.in",
+  "fetched_at": null,
+  "last_verified_at": null,
+  "confidence": 0.5,
+  "needs_verification": true,
+  "demo_sample": true
+ },
+ {
+  "type": "exam",
+  "title": "NEET (UG)",
+  "level": "national",
+  "state": null,
+  "authority": "National Testing Agency",
+  "summary_en": "The entrance exam for MBBS, BDS and other undergraduate medical courses.",
+  "eligibility": {
+   "min_age": null,
+   "max_age": null,
+   "gender": null,
+   "category": null,
+   "education": "Class 12",
+   "income_limit": null,
+   "occupation": null,
+   "domicile": null,
+   "other": "Details are in the NTA information bulletin."
+  },
+  "target_groups": [
+   "student",
+   "youth"
+  ],
+  "benefit": "Admission to undergraduate medical courses.",
+  "how_to_apply": "Apply online through the NTA NEET portal.",
+  "documents_required": null,
+  "dates": {
+   "notification": null,
+   "application_start": null,
+   "application_end": null,
+   "exam_date": null,
+   "result_date": null
+  },
+  "fee": null,
+  "official_url": "https://neet.nta.nic.in",
+  "source_url": "https://neet.nta.nic.in",
+  "fetched_at": null,
+  "last_verified_at": null,
+  "confidence": 0.5,
+  "needs_verification": true,
+  "demo_sample": true
+ },
+ {
+  "type": "exam",
+  "title": "JEE Main",
+  "level": "national",
+  "state": null,
+  "authority": "National Testing Agency",
+  "summary_en": "The entrance exam for NITs, IIITs and other engineering institutes; qualifies for JEE Advanced.",
+  "eligibility": {
+   "min_age": null,
+   "max_age": null,
+   "gender": null,
+   "category": null,
+   "education": "Class 12",
+   "income_limit": null,
+   "occupation": null,
+   "domicile": null,
+   "other": "Details are in the NTA information bulletin."
+  },
+  "target_groups": [
+   "student",
+   "youth"
+  ],
+  "benefit": "Admission to engineering institutes.",
+  "how_to_apply": "Apply online on the NTA JEE Main portal.",
+  "documents_required": null,
+  "dates": {
+   "notification": null,
+   "application_start": null,
+   "application_end": null,
+   "exam_date": null,
+   "result_date": null
+  },
+  "fee": null,
+  "official_url": "https://jeemain.nta.nic.in",
+  "source_url": "https://jeemain.nta.nic.in",
+  "fetched_at": null,
+  "last_verified_at": null,
+  "confidence": 0.5,
+  "needs_verification": true,
+  "demo_sample": true
+ },
+ {
+  "type": "exam",
+  "title": "GATE",
+  "level": "national",
+  "state": null,
+  "authority": "IITs (organising institute changes yearly)",
+  "summary_en": "The exam for M.Tech and PhD admission and some PSU recruitment in engineering and science.",
+  "eligibility": {
+   "min_age": null,
+   "max_age": null,
+   "gender": null,
+   "category": null,
+   "education": "Graduate",
+   "income_limit": null,
+   "occupation": null,
+   "domicile": null,
+   "other": "Final-year students can usually apply; see the brochure."
+  },
+  "target_groups": [
+   "student",
+   "youth",
+   "job_seeker"
+  ],
+  "benefit": "Admission to postgraduate programmes and some PSU recruitment.",
+  "how_to_apply": "Register on the official GATE application portal.",
+  "documents_required": null,
+  "dates": {
+   "notification": null,
+   "application_start": null,
+   "application_end": null,
+   "exam_date": null,
+   "result_date": null
+  },
+  "fee": null,
+  "official_url": "https://gate.iitk.ac.in",
+  "source_url": "https://gate.iitk.ac.in",
+  "fetched_at": null,
+  "last_verified_at": null,
+  "confidence": 0.5,
+  "needs_verification": true,
+  "demo_sample": true
+ },
+ {
+  "type": "exam",
+  "title": "IBPS Common Recruitment Process for Banks",
+  "level": "national",
+  "state": null,
+  "authority": "Institute of Banking Personnel Selection",
+  "summary_en": "Exams for officer and clerk recruitment in public sector banks.",
+  "eligibility": {
+   "min_age": null,
+   "max_age": null,
+   "gender": null,
+   "category": null,
+   "education": "Graduate",
+   "income_limit": null,
+   "occupation": null,
+   "domicile": null,
+   "other": "Post-wise criteria apply."
+  },
+  "target_groups": [
+   "youth",
+   "job_seeker"
+  ],
+  "benefit": "Recruitment to public sector banks.",
+  "how_to_apply": "Apply online on the IBPS website when a notification is open.",
+  "documents_required": null,
+  "dates": {
+   "notification": null,
+   "application_start": null,
+   "application_end": null,
+   "exam_date": null,
+   "result_date": null
+  },
+  "fee": null,
+  "official_url": "https://www.ibps.in",
+  "source_url": "https://www.ibps.in",
+  "fetched_at": null,
+  "last_verified_at": null,
+  "confidence": 0.5,
+  "needs_verification": true,
+  "demo_sample": true
+ },
+ {
+  "type": "job",
+  "title": "Railway Recruitment Board vacancies",
+  "level": "national",
+  "state": null,
+  "authority": "Railway Recruitment Boards",
+  "summary_en": "Central railway recruitment through the Railway Recruitment Boards.",
+  "eligibility": {
+   "min_age": null,
+   "max_age": null,
+   "gender": null,
+   "category": null,
+   "education": null,
+   "income_limit": null,
+   "occupation": null,
+   "domicile": null,
+   "other": "Eligibility differs by post; see each notification."
+  },
+  "target_groups": [
+   "youth",
+   "job_seeker"
+  ],
+  "benefit": "Posts in Indian Railways.",
+  "how_to_apply": "Apply online on the regional RRB website named in the notification.",
+  "documents_required": null,
+  "dates": {
+   "notification": null,
+   "application_start": null,
+   "application_end": null,
+   "exam_date": null,
+   "result_date": null
+  },
+  "fee": null,
+  "official_url": "https://www.rrbcdg.gov.in",
+  "source_url": "https://www.rrbcdg.gov.in",
+  "fetched_at": null,
+  "last_verified_at": null,
+  "confidence": 0.5,
+  "needs_verification": true,
+  "demo_sample": true
+ },
+ {
+  "type": "job",
+  "title": "Employment News listings",
+  "level": "national",
+  "state": null,
+  "authority": "Publications Division, Government of India",
+  "summary_en": "Weekly listings of government vacancies and exams.",
+  "eligibility": {
+   "min_age": null,
+   "max_age": null,
+   "gender": null,
+   "category": null,
+   "education": null,
+   "income_limit": null,
+   "occupation": null,
+   "domicile": null,
+   "other": "Each advertised post has its own criteria."
+  },
+  "target_groups": [
+   "job_seeker",
+   "youth"
+  ],
+  "benefit": "Information about government jobs and exams.",
+  "how_to_apply": "Read the listing and apply through the advertising department's official site.",
+  "documents_required": null,
+  "dates": {
+   "notification": null,
+   "application_start": null,
+   "application_end": null,
+   "exam_date": null,
+   "result_date": null
+  },
+  "fee": null,
+  "official_url": "https://www.employmentnews.gov.in",
+  "source_url": "https://www.employmentnews.gov.in",
+  "fetched_at": null,
+  "last_verified_at": null,
+  "confidence": 0.5,
+  "needs_verification": true,
+  "demo_sample": true
+ }
+]

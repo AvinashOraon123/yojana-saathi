@@ -1,0 +1,302 @@
+[
+ {
+  "lang": "hi-IN",
+  "q": "मैं किसान हूँ, कौन सी योजना आय सहायता देती है?",
+  "en": "I am a farmer, which scheme gives income support?",
+  "expect": "PM-KISAN"
+ },
+ {
+  "lang": "hi-IN",
+  "q": "इंजीनियरिंग पढ़ने वाली लड़कियों के लिए छात्रवृत्ति",
+  "en": "Scholarship for girls studying engineering",
+  "expect": "AICTE Pragati Scholarship for Girls"
+ },
+ {
+  "lang": "hi-IN",
+  "q": "वरिष्ठ नागरिकों के लिए पेंशन",
+  "en": "Pension for senior citizens",
+  "expect": "Indira Gandhi National Old Age Pension Scheme"
+ },
+ {
+  "lang": "hi-IN",
+  "q": "आईएएस परीक्षा के लिए आवेदन कैसे करें",
+  "en": "How to apply for the IAS exam",
+  "expect": "UPSC Civil Services Examination"
+ },
+ {
+  "lang": "hi-IN",
+  "q": "मेडिकल कॉलेज में दाखिले की प्रवेश परीक्षा",
+  "en": "Entrance exam for medical college",
+  "expect": "NEET (UG)"
+ },
+ {
+  "lang": "hi-IN",
+  "q": "इंजीनियरिंग कॉलेज की प्रवेश परीक्षा",
+  "en": "Entrance exam for engineering college",
+  "expect": "JEE Main"
+ },
+ {
+  "lang": "hi-IN",
+  "q": "छोटा व्यवसाय शुरू करने के लिए ऋण",
+  "en": "Loan to start a small business",
+  "expect": "Pradhan Mantri Mudra Yojana"
+ },
+ {
+  "lang": "hi-IN",
+  "q": "गरीब परिवारों के लिए स्वास्थ्य बीमा",
+  "en": "Health insurance for poor families",
+  "expect": "Ayushman Bharat PM-JAY"
+ },
+ {
+  "lang": "hi-IN",
+  "q": "युवाओं के लिए कौशल प्रशिक्षण",
+  "en": "Skill training for youth",
+  "expect": "Pradhan Mantri Kaushal Vikas Yojana"
+ },
+ {
+  "lang": "hi-IN",
+  "q": "असंगठित मजदूर के रूप में पंजीकरण कैसे करें",
+  "en": "How to register as an unorganised worker",
+  "expect": "e-Shram registration"
+ },
+ {
+  "lang": "bn-IN",
+  "q": "আমি একজন কৃষক, কোন প্রকল্প আয় সহায়তা দেয়?",
+  "en": "I am a farmer, which scheme gives income support?",
+  "expect": "PM-KISAN"
+ },
+ {
+  "lang": "bn-IN",
+  "q": "ইঞ্জিনিয়ারিং পড়ুয়া মেয়েদের জন্য বৃত্তি",
+  "en": "Scholarship for girls studying engineering",
+  "expect": "AICTE Pragati Scholarship for Girls"
+ },
+ {
+  "lang": "bn-IN",
+  "q": "বয়স্ক নাগরিকদের জন্য পেনশন",
+  "en": "Pension for senior citizens",
+  "expect": "Indira Gandhi National Old Age Pension Scheme"
+ },
+ {
+  "lang": "bn-IN",
+  "q": "আইএএস পরীক্ষার জন্য কীভাবে আবেদন করব",
+  "en": "How to apply for the IAS exam",
+  "expect": "UPSC Civil Services Examination"
+ },
+ {
+  "lang": "bn-IN",
+  "q": "মেডিকেল কলেজে ভর্তির প্রবেশিকা পরীক্ষা",
+  "en": "Entrance exam for medical college",
+  "expect": "NEET (UG)"
+ },
+ {
+  "lang": "bn-IN",
+  "q": "ইঞ্জিনিয়ারিং কলেজের প্রবেশিকা পরীক্ষা",
+  "en": "Entrance exam for engineering college",
+  "expect": "JEE Main"
+ },
+ {
+  "lang": "bn-IN",
+  "q": "ছোট ব্যবসা শুরু করার জন্য ঋণ",
+  "en": "Loan to start a small business",
+  "expect": "Pradhan Mantri Mudra Yojana"
+ },
+ {
+  "lang": "bn-IN",
+  "q": "গরিব পরিবারের জন্য স্বাস্থ্য বিমা",
+  "en": "Health insurance for poor families",
+  "expect": "Ayushman Bharat PM-JAY"
+ },
+ {
+  "lang": "bn-IN",
+  "q": "তরুণদের জন্য দক্ষতা প্রশিক্ষণ",
+  "en": "Skill training for youth",
+  "expect": "Pradhan Mantri Kaushal Vikas Yojana"
+ },
+ {
+  "lang": "bn-IN",
+  "q": "অসংগঠিত শ্রমিক হিসেবে নিবন্ধন কীভাবে করব",
+  "en": "How to register as an unorganised worker",
+  "expect": "e-Shram registration"
+ },
+ {
+  "lang": "ta-IN",
+  "q": "நான் ஒரு விவசாயி, எந்த திட்டம் வருமான உதவி வழங்குகிறது?",
+  "en": "I am a farmer, which scheme gives income support?",
+  "expect": "PM-KISAN"
+ },
+ {
+  "lang": "ta-IN",
+  "q": "பொறியியல் படிக்கும் பெண்களுக்கான உதவித்தொகை",
+  "en": "Scholarship for girls studying engineering",
+  "expect": "AICTE Pragati Scholarship for Girls"
+ },
+ {
+  "lang": "ta-IN",
+  "q": "மூத்த குடிமக்களுக்கான ஓய்வூதியம்",
+  "en": "Pension for senior citizens",
+  "expect": "Indira Gandhi National Old Age Pension Scheme"
+ },
+ {
+  "lang": "ta-IN",
+  "q": "ஐஏஎஸ் தேர்வுக்கு எப்படி விண்ணப்பிப்பது",
+  "en": "How to apply for the IAS exam",
+  "expect": "UPSC Civil Services Examination"
+ },
+ {
+  "lang": "ta-IN",
+  "q": "மருத்துவக் கல்லூரி சேர்க்கைக்கான நுழைவுத் தேர்வு",
+  "en": "Entrance exam for medical college",
+  "expect": "NEET (UG)"
+ },
+ {
+  "lang": "ta-IN",
+  "q": "பொறியியல் கல்லூரி நுழைவுத் தேர்வு",
+  "en": "Entrance exam for engineering college",
+  "expect": "JEE Main"
+ },
+ {
+  "lang": "ta-IN",
+  "q": "சிறு தொழில் தொடங்க கடன்",
+  "en": "Loan to start a small business",
+  "expect": "Pradhan Mantri Mudra Yojana"
+ },
+ {
+  "lang": "ta-IN",
+  "q": "ஏழைக் குடும்பங்களுக்கான மருத்துவக் காப்பீடு",
+  "en": "Health insurance for poor families",
+  "expect": "Ayushman Bharat PM-JAY"
+ },
+ {
+  "lang": "ta-IN",
+  "q": "இளைஞர்களுக்கான திறன் பயிற்சி",
+  "en": "Skill training for youth",
+  "expect": "Pradhan Mantri Kaushal Vikas Yojana"
+ },
+ {
+  "lang": "ta-IN",
+  "q": "அமைப்புசாரா தொழிலாளராக பதிவு செய்வது எப்படி",
+  "en": "How to register as an unorganised worker",
+  "expect": "e-Shram registration"
+ },
+ {
+  "lang": "te-IN",
+  "q": "నేను రైతును, ఏ పథకం ఆదాయ సహాయం ఇస్తుంది?",
+  "en": "I am a farmer, which scheme gives income support?",
+  "expect": "PM-KISAN"
+ },
+ {
+  "lang": "te-IN",
+  "q": "ఇంజనీరింగ్ చదివే అమ్మాయిలకు స్కాలర్‌షిప్",
+  "en": "Scholarship for girls studying engineering",
+  "expect": "AICTE Pragati Scholarship for Girls"
+ },
+ {
+  "lang": "te-IN",
+  "q": "వృద్ధులకు పింఛన్",
+  "en": "Pension for senior citizens",
+  "expect": "Indira Gandhi National Old Age Pension Scheme"
+ },
+ {
+  "lang": "te-IN",
+  "q": "ఐఏఎస్ పరీక్షకు ఎలా దరఖాస్తు చేయాలి",
+  "en": "How to apply for the IAS exam",
+  "expect": "UPSC Civil Services Examination"
+ },
+ {
+  "lang": "te-IN",
+  "q": "మెడికల్ కాలేజీ ప్రవేశ పరీక్ష",
+  "en": "Entrance exam for medical college",
+  "expect": "NEET (UG)"
+ },
+ {
+  "lang": "te-IN",
+  "q": "ఇంజనీరింగ్ కాలేజీ ప్రవేశ పరీక్ష",
+  "en": "Entrance exam for engineering college",
+  "expect": "JEE Main"
+ },
+ {
+  "lang": "te-IN",
+  "q": "చిన్న వ్యాపారం ప్రారంభించడానికి రుణం",
+  "en": "Loan to start a small business",
+  "expect": "Pradhan Mantri Mudra Yojana"
+ },
+ {
+  "lang": "te-IN",
+  "q": "పేద కుటుంబాలకు ఆరోగ్య బీమా",
+  "en": "Health insurance for poor families",
+  "expect": "Ayushman Bharat PM-JAY"
+ },
+ {
+  "lang": "te-IN",
+  "q": "యువతకు నైపుణ్య శిక్షణ",
+  "en": "Skill training for youth",
+  "expect": "Pradhan Mantri Kaushal Vikas Yojana"
+ },
+ {
+  "lang": "te-IN",
+  "q": "అసంఘటిత కార్మికుడిగా నమోదు చేసుకోవడం ఎలా",
+  "en": "How to register as an unorganised worker",
+  "expect": "e-Shram registration"
+ },
+ {
+  "lang": "mr-IN",
+  "q": "मी शेतकरी आहे, कोणती योजना उत्पन्न मदत देते?",
+  "en": "I am a farmer, which scheme gives income support?",
+  "expect": "PM-KISAN"
+ },
+ {
+  "lang": "mr-IN",
+  "q": "इंजिनिअरिंग शिकणाऱ्या मुलींसाठी शिष्यवृत्ती",
+  "en": "Scholarship for girls studying engineering",
+  "expect": "AICTE Pragati Scholarship for Girls"
+ },
+ {
+  "lang": "mr-IN",
+  "q": "ज्येष्ठ नागरिकांसाठी पेन्शन",
+  "en": "Pension for senior citizens",
+  "expect": "Indira Gandhi National Old Age Pension Scheme"
+ },
+ {
+  "lang": "mr-IN",
+  "q": "आयएएस परीक्षेसाठी अर्ज कसा करावा",
+  "en": "How to apply for the IAS exam",
+  "expect": "UPSC Civil Services Examination"
+ },
+ {
+  "lang": "mr-IN",
+  "q": "वैद्यकीय महाविद्यालय प्रवेश परीक्षा",
+  "en": "Entrance exam for medical college",
+  "expect": "NEET (UG)"
+ },
+ {
+  "lang": "mr-IN",
+  "q": "अभियांत्रिकी महाविद्यालय प्रवेश परीक्षा",
+  "en": "Entrance exam for engineering college",
+  "expect": "JEE Main"
+ },
+ {
+  "lang": "mr-IN",
+  "q": "लहान व्यवसाय सुरू करण्यासाठी कर्ज",
+  "en": "Loan to start a small business",
+  "expect": "Pradhan Mantri Mudra Yojana"
+ },
+ {
+  "lang": "mr-IN",
+  "q": "गरीब कुटुंबांसाठी आरोग्य विमा",
+  "en": "Health insurance for poor families",
+  "expect": "Ayushman Bharat PM-JAY"
+ },
+ {
+  "lang": "mr-IN",
+  "q": "तरुणांसाठी कौशल्य प्रशिक्षण",
+  "en": "Skill training for youth",
+  "expect": "Pradhan Mantri Kaushal Vikas Yojana"
+ },
+ {
+  "lang": "mr-IN",
+  "q": "असंघटित कामगार म्हणून नोंदणी कशी करावी",
+  "en": "How to register as an unorganised worker",
+  "expect": "e-Shram registration"
+ }
+]

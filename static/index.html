@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yojana Saathi - Schemes, Exams, Scholarships and Jobs</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<div class="tricolour" aria-hidden="true"><span></span><span></span><span></span></div>
+
+<div class="utility" role="navigation" aria-label="Accessibility and language">
+  <div class="wrap utility-row">
+    <span class="util-note">Independent citizen guide &mdash; not an official government website</span>
+    <span class="util-controls">
+      <button type="button" id="fs-minus" aria-label="Decrease text size">A-</button>
+      <button type="button" id="fs-reset" aria-label="Normal text size">A</button>
+      <button type="button" id="fs-plus" aria-label="Increase text size">A+</button>
+      <button type="button" id="contrast" aria-pressed="false" aria-label="Toggle high contrast">&#9680; Contrast</button>
+      <label class="sr-only" for="lang">Language</label>
+      <select id="lang"></select>
+    </span>
+  </div>
+</div>
+
+<header class="masthead">
+  <div class="wrap masthead-row">
+    <div class="logo" aria-hidden="true">&#9784;</div>
+    <div>
+      <h1>योजना साथी <span class="en-name">Yojana Saathi</span></h1>
+      <p class="tag">Find government schemes, exams, scholarships and jobs in your language</p>
+    </div>
+  </div>
+</header>
+
+<nav class="mainnav" aria-label="Sections">
+  <div class="wrap">
+    <a href="#main" class="active">Search</a>
+    <a href="#profile-panel">Find what fits me</a>
+    <a href="#about">About &amp; sources</a>
+  </div>
+</nav>
+
+<main id="main" class="wrap" tabindex="-1">
+  <div id="sample-banner" class="notice" role="status" hidden>
+    Sample data is being shown. These entries are examples and carry no dates. Always confirm details on the official site.
+  </div>
+
+  <section class="panel search-panel" aria-labelledby="search-h">
+    <h2 id="search-h" data-i18n="search">Search</h2>
+    <form id="search-form" role="search">
+      <div class="search-row">
+        <button type="button" id="mic" class="mic" aria-label="Speak your question" title="Speak your question">&#127908;</button>
+        <label class="sr-only" for="q">Your question</label>
+        <input id="q" type="search" maxlength="500" autocomplete="off" placeholder="Ask about a scheme, exam, scholarship or job">
+        <button type="submit" class="btn primary" id="go"><span data-i18n="search">Search</span></button>
+      </div>
+    </form>
+    <p class="hint" id="mic-hint">Tap the microphone and speak in your language.</p>
+
+    <div class="chips" role="group" aria-label="Filters">
+      <div class="chip-group" id="type-chips" role="group" aria-label="Type"></div>
+      <div class="chip-group" id="level-chips" role="group" aria-label="Level"></div>
+      <label class="sr-only" for="state">State</label>
+      <select id="state" aria-label="State"><option value="">All states</option></select>
+      <button type="button" class="chip" id="closing" aria-pressed="false" data-i18n="closing_soon">Closing soon</button>
+    </div>
+  </section>
+
+  <section class="panel" id="profile-panel" aria-labelledby="profile-h">
+    <details>
+      <summary id="profile-h" data-i18n="profile">Find what fits me</summary>
+      <p class="hint">Everything here is optional and stays in this browser tab. We do not store it.</p>
+      <div class="grid">
+        <label>Age <input id="p-age" type="number" min="0" max="120" inputmode="numeric"></label>
+        <label>Gender
+          <select id="p-gender"><option value="">Prefer not to say</option><option value="female">Female</option><option value="male">Male</option></select></label>
+        <label>Category
+          <select id="p-category"><option value="">Not specified</option><option>General</option><option>OBC</option><option>SC</option><option>ST</option><option>EWS</option><option>PwD</option><option>Minority</option></select></label>
+        <label>Education
+          <select id="p-education"><option value="">Not specified</option><option>Class 8</option><option>Class 10</option><option>Class 12</option><option>Diploma</option><option>Graduate</option><option>Postgraduate</option></select></label>
+        <label>Occupation <input id="p-occupation" type="text" maxlength="40" placeholder="e.g. farmer, student"></label>
+        <label>Annual family income (Rs) <input id="p-income" type="number" min="0" inputmode="numeric"></label>
+      </div>
+      <button type="button" class="btn" id="apply-profile">Apply to search</button>
+    </details>
+  </section>
+
+  <div id="status" class="status" role="status" aria-live="polite"></div>
+
+  <section id="answer-box" class="panel answer" aria-live="polite" hidden>
+    <h2>Answer</h2>
+    <p id="answer"></p>
+    <div class="answer-actions">
+      <button type="button" class="btn small" id="answer-listen" hidden>&#128266; <span data-i18n="listen">Listen</span></button>
+      <button type="button" class="btn small ghost" id="answer-en" hidden data-i18n="english">Show English original</button>
+    </div>
+    <p id="answer-english" class="english" hidden></p>
+  </section>
+
+  <section id="results" aria-label="Results"></section>
+
+  <section id="about" class="panel about">
+    <h2>About &amp; sources</h2>
+    <p>Yojana Saathi collects information from official government pages and explains it in simple language. It does not accept applications and is not run by any government body.</p>
+    <p id="today-line"></p>
+    <p><a href="/api/sources/status">View source status</a></p>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="tricolour" aria-hidden="true"><span></span><span></span><span></span></div>
+  <div class="wrap">
+    <p><strong>Disclaimer.</strong> This is an independent guide, not an official government website. Dates, amounts and eligibility can change. Always confirm on the official site before you apply.</p>
+    <p>Language, speech and translation are powered by Sarvam AI.</p>
+  </div>
+</footer>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
